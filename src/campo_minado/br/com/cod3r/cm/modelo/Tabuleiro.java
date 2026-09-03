@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
+import campo_minado.br.com.cod3r.cm.excecao.ExplosaoException;
+
 public class Tabuleiro {
 
 	private int linhas;
@@ -23,11 +25,17 @@ public class Tabuleiro {
 		sortearMinas(); // sempre que reiniciar o jogo esse será chamado
 	}
 	
+	// Para detectar quando houver alguma explosào
 	public void abrir(int linha, int coluna) {
-		campos.parallelStream()
+		try {
+			campos.parallelStream()
 			.filter(c -> c.getLinha() == linha && c.getColuna() == coluna)
 			.findFirst()
 			.ifPresent(c -> c.abrir());;
+		} catch (ExplosaoException e) {
+			campos.forEach(c -> c.setAberto(true));
+			throw e;
+		}
 	}
 	
 	public void alternarMarcacao(int linha, int coluna) {
