@@ -36,7 +36,7 @@ public class TabuleiroConsole {
 				}
 			}
 		} catch (SairException e) {
-			System.out.println("Tchau!!!");
+			System.out.println("Fechando aplicação...");
 		} finally {
 			entrada.close();
 		}
@@ -48,7 +48,7 @@ public class TabuleiroConsole {
 			while(!tabuleiro.objetivoAlcancado()) {
 				System.out.println(tabuleiro);
 				
-				String digitado = capturarValorDigitado("Digite (x, y): ");
+				String digitado = capturarValorDigitado("Digite (x, y) ou (sair): ");
 				
 				Iterator<Integer> xy = Arrays.stream(digitado.split(","))
 					.map(e -> Integer.parseInt(e.trim())).iterator();
@@ -68,6 +68,7 @@ public class TabuleiroConsole {
 				}
 			}
 			
+			System.out.println(tabuleiro);
 			System.out.println("Você ganhou!!!");
 		} catch (ExplosaoException e) {
 			System.out.println(tabuleiro);
