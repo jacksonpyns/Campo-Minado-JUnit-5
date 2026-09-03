@@ -41,7 +41,7 @@ public class Campo {
 		}
 	}
 	
-	public void aternarMarcacao() {
+	public void alternarMarcacao() {
 		if (!aberto) {
 			marcado = !marcado;
 		}

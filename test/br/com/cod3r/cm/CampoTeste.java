@@ -65,14 +65,14 @@ public class CampoTeste {
 	
 	@Test
 	void testeAlternarMarcacao() {
-		campo.aternarMarcacao();
+		campo.alternarMarcacao();
 		assertTrue(campo.isMarcado());
 	}
 	
 	@Test
 	void testeAlternarMarcacaoDuasChamadas() {
-		campo.aternarMarcacao();
-		campo.aternarMarcacao();
+		campo.alternarMarcacao();
+		campo.alternarMarcacao();
 		assertFalse(campo.isMarcado());
 	}
 	
@@ -83,13 +83,13 @@ public class CampoTeste {
 	
 	@Test
 	void testeAbriNaoMinadoMarcado() {
-		campo.aternarMarcacao();
+		campo.alternarMarcacao();
 		assertFalse(campo.abrir());
 	}
 	
 	@Test
 	void testeAbriMinadoMarcado() {
-		campo.aternarMarcacao();
+		campo.alternarMarcacao();
 		campo.minar();
 		assertFalse(campo.abrir());
 	}
